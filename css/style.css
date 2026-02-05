@@ -894,12 +894,14 @@ body {
     height: 26px !important;
   }
 }
-/* Ajuste específico para las imágenes de la sección "Tops Halter" */
+/* Ajuste para las imágenes de "Tops Halter" */
 .tops-halter img {
   width: 100% !important;
   max-width: 100% !important;
   height: auto !important;
-  object-fit: contain !important;
+  object-fit: cover !important;
   margin: 0 auto;
   display: block;
+  border-radius: 12px;  /* Opcional: para agregar bordes redondeados si lo deseas */
 }
+
