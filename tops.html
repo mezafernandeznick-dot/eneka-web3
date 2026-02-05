@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ENEKA – Tops</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+<header class="header">
+  <button class="icon-btn" onclick="history.back()" aria-label="Volver">←</button>
+  <a class="logo" href="index.html" style="margin-left:8px">ENEKA</a>
+</header>
+
+<main class="main">
+
+  <nav class="breadcrumb">
+    <a href="index.html">Inicio</a>
+    <span class="sep">›</span>
+    <span>Tops</span>
+  </nav>
+
+  <h1 class="page-title">Tops Halter</h1>
+  <p class="subhead">Explora opciones para ella.</p>
+
+  <!-- ===== BLOQUE 1 ===== -->
+  <section class="product-layout">
+
+   <div>
+  <div class="lifestyle-images">
+
+  <figure class="img-item">
+    <img src="img/tpg.rojovino.jpg">
+    <figcaption>Color Rojo vino</fipgcation>
+  </figure>
+
+  <figure class="img-item">
+    <img src="img/tpg.rosado.jpg">
+    <figcaption>Color Rosado</figcaption>
+  </figure>
+
+  <figure class="img-item">
+    <img src="img/tpg.blanco.jpg">
+    <figcaption>Color Blanco</figcaption>
+  </figure>
+
+  <figure class="img-item">
+    <img src="img/tpg.azulmarino.jpg">
+    <figcaption>Color Azul marino</figcaption>
+  </figure>
+
+  <figure class="img-item">
+    <img src="img/topgriss.jpg">
+    <figcaption>Color Gris</figcaption>
+  </figure>
+
+  <figure class="img-item">
+    <img src="img/tpg.negro.jpg">
+    <figcaption>Color Negro</figcaption>
+  </figure>
+
+</div>
+</div>
+
+    <div class="product-info">
+      <h4 class="product-name">Top Deportivo</h4>
+      <p class="product-desc">
+        Soporte medio, tela transpirable, ideal para entrenamiento.
+      </p>
+      <span class="product-price">S/ 48.00</span>
+
+      <button class="buy-btn" onclick="comprar(this)">
+  Comprar
+</button>
+
+    </div>
+
+  </section>
+
+  <!-- ===== BLOQUE 2 ===== -->
+  <h1 class="page-title" style="margin-top:40px;">Más Tops</h1>
+
+  <section class="product-layout">
+
+    <div>
+      <div class="lifestyle-images">
+        <img src="img/top1.jpg">
+        <img src="img/top2.jpg">
+        <img src="img/tpg.negro.jpg">
+      </div>
+
+      <div class="gallery-wrapper">
+
+        <div class="thumbs">
+          <img src="img/top1.1.jpg" data-index="0" class="active" onclick="changeTop2(this)">
+          <img src="img/top1.2.jpg" data-index="1" onclick="changeTop2(this)">
+          <img src="img/top1.3.jpg" data-index="2" onclick="changeTop2(this)">
+          <img src="img/top1.jpg" data-index="3" onclick="changeTop2(this)">
+          <img src="img/top2.jpg" data-index="4" onclick="changeTop2(this)">
+          <img src="img/top1.3.jpg" data-index="5" onclick="changeTop2(this)">
+          <img src="img/top1.1.jpg" data-index="6" onclick="changeTop2(this)">
+          <img src="img/top1.2.jpg" data-index="7" onclick="changeTop2(this)">
+          <img src="img/top1.3.jpg" data-index="8" onclick="changeTop2(this)">
+          <img src="img/top1.1.jpg" data-index="9" onclick="changeTop2(this)">
+        </div>
+
+        <div class="main-image">
+          <button class="arrow left" onclick="prevTop2()">‹</button>
+          <img id="topImage2" src="img/top1.1.jpg">
+          <button class="arrow right" onclick="nextTop2()">›</button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="product-info">
+      <h4 class="product-name">Top Deportivo Premium</h4>
+      <p class="product-desc">
+        Alto soporte, ajuste firme y máxima comodidad.
+      </p>
+      <span class="product-price">S/ 25.00</span>
+
+      <button class="buy-btn" onclick="comprar(this)">
+  Comprar
+</button>
+
+    </div>
+
+  </section>
+
+</main>
+
+ <div class="fab-container">
+ <a class="fab whatsapp"
+   href="https://wa.me/51927208885?text=Hola!%20%E2%99%A5%20Vengo%20desde%20su%20p%C3%A1gina%20web%20y%20estoy%20interesada%20en%20adquirir%20un%20producto.%0AQuisiera%20m%C3%A1s%20informaci%C3%B3n,%20por%20favor.%20%E2%99%A5
+"
+   target="_blank"
+   rel="noopener">
+  <img src="img/WhatsApp_icon.png" alt="WhatsApp">
+</a>
+
+  <a class="fab instagram" href="https://www.instagram.com/eneka.fit/" target="_blank" rel="noopener">
+    <img src="img/ig.avif" alt="Instagram">
+  </a>
+
+  <a class="fab tiktok" href="https://www.tiktok.com/@eneka.fit?_r=1&_t=ZS-93fpCNyZUYO" target="_blank" rel="noopener">
+    <img src="img/tiktok.avif" alt="TikTok">
+  </a>
+</div>
+
+<script src="js/whatsapp.js"></script>
+
+<script>
+document.querySelectorAll('.product-layout').forEach(section => {
+
+  const name = section.querySelector('.product-name')?.textContent;
+  const price = section.querySelector('.product-price')?.textContent.replace('S/','').trim();
+  const buyBtn = section.querySelector('.buy-btn');
+
+  const mainImg = section.querySelector('.main-image img');
+  const thumbs = section.querySelectorAll('.thumbs img');
+  const lifestyleImgs = section.querySelectorAll('.lifestyle-images img');
+
+  let index = 0;
+  let images = [];
+
+  /* ===== BLOQUE CON GALERÍA (flechas) ===== */
+  if (thumbs.length && mainImg) {
+    images = [...thumbs].map(img => img.src);
+
+    function update(i){
+      index = (i + images.length) % images.length;
+      mainImg.src = images[index];
+
+      thumbs.forEach(t => t.classList.remove('active'));
+      thumbs[index]?.classList.add('active');
+    }
+
+    thumbs.forEach((img,i)=>{
+      img.onclick = ()=> update(i);
+    });
+
+    const left = section.querySelector('.arrow.left');
+    const right = section.querySelector('.arrow.right');
+
+    left && (left.onclick = ()=> update(index-1));
+    right && (right.onclick = ()=> update(index+1));
+
+    buyBtn && (buyBtn.onclick = ()=> comprar(name, price, mainImg.src));
+  }
+
+  /* ===== BLOQUE SIN GALERÍA (solo lifestyle) ===== */
+  else if (lifestyleImgs.length && buyBtn) {
+    buyBtn.onclick = ()=> comprar(name, price, lifestyleImgs[0].src);
+  }
+
+});
+</script>
+
+
+</body>
+</html>

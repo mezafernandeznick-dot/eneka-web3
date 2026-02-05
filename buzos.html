@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ENEKA – Buzos</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+<header class="header">
+  <button class="icon-btn" onclick="history.back()">←</button>
+  <a class="logo" href="index.html">ENEKA</a>
+</header>
+
+<main class="main">
+
+  <nav class="breadcrumb">
+    <a href="index.html">Inicio</a>
+    <span class="sep">›</span>
+    <span>Buzos</span>
+  </nav>
+
+  <h1 class="page-title">Buzos</h1>
+  <p class="subhead">Explora opciones para él y para ella.</p>
+
+  <!-- ================= BLOQUE PRODUCTO ================= -->
+  <section class="product-layout">
+
+    <!-- IZQUIERDA -->
+    <div>
+
+      <!-- LIFESTYLE -->
+      <div class="lifestyle-images">
+        <img src="img/buzos mujer.jpg" alt="Buzo lifestyle 1">
+        <img src="img/buzos mujer.jpg" alt="Buzo lifestyle 2">
+        <img src="img/buzos mujer.jpg" alt="Buzo lifestyle 3">
+      </div>
+
+      <!-- GALERÍA -->
+      <div class="gallery-wrapper">
+
+        <!-- MINIATURAS -->
+        <div class="thumbs">
+          <img src="img/commu.rosado.jpg" data-index="0" class="active" onclick="changeBuzos(this)">
+          <img src="img/commu.blanco.jpg" data-index="1" onclick="changeBuzos(this)">
+          <img src="img/commu.blanco.jpg" data-index="2" onclick="changeBuzos(this)">
+          <img src="img/commu.rosado.jpg" data-index="3" onclick="changeBuzos(this)">
+          <img src="img/commu.blanco.jpg" data-index="4" onclick="changeBuzos(this)">
+          <img src="img/commu.rosado.jpg" data-index="5" onclick="changeBuzos(this)">
+          <img src="img/commu.blanco.jpg" data-index="6" onclick="changeBuzos(this)">
+          <img src="img/commu.rosado.jpg" data-index="7" onclick="changeBuzos(this)">
+          <img src="img/commu.blanco.jpg" data-index="8" onclick="changeBuzos(this)">
+          <img src="img/commu.rosado.jpg" data-index="9" onclick="changeBuzos(this)">
+        </div>
+
+        <!-- IMAGEN PRINCIPAL -->
+        <div class="main-image">
+          <button class="arrow left" onclick="prevBuzos()">‹</button>
+
+          <img
+            id="currentImage-buzos"
+            src="img/commu.rosado.jpg"
+            alt="Buzo Deportivo"
+          >
+
+          <button class="arrow right" onclick="nextBuzos()">›</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DERECHA -->
+    <div class="product-info">
+      <h4 class="product-name">Buzo Deportivo</h4>
+      <p class="product-desc">
+        Buzo cómodo y abrigador, ideal para entrenar o uso diario.
+      </p>
+      <span class="product-price">S/ 45.00</span>
+
+      <button class="buy-btn" onclick="comprar(this)">
+  Comprar
+</button>
+
+    </div>
+
+  </section>
+  <!-- ================= FIN BLOQUE ================= -->
+
+</main>
+
+ <div class="fab-container">
+ <a class="fab whatsapp"
+   href="https://wa.me/51927208885?text=Hola!%20%E2%99%A5%20Vengo%20desde%20su%20p%C3%A1gina%20web%20y%20estoy%20interesada%20en%20adquirir%20un%20producto.%0AQuisiera%20m%C3%A1s%20informaci%C3%B3n,%20por%20favor.%20%E2%99%A5
+"
+   target="_blank"
+   rel="noopener">
+  <img src="img/WhatsApp_icon.png" alt="WhatsApp">
+</a>
+
+  <a class="fab instagram" href="https://www.instagram.com/eneka.fit/" target="_blank" rel="noopener">
+    <img src="img/ig.avif" alt="Instagram">
+  </a>
+
+  <a class="fab tiktok" href="https://www.tiktok.com/@eneka.fit?_r=1&_t=ZS-93fpCNyZUYO" target="_blank" rel="noopener">
+    <img src="img/tiktok.avif" alt="TikTok">
+  </a>
+</div>
+
+<script src="js/whatsapp.js"></script>
+
+<script>
+document.querySelectorAll('.product-layout').forEach(section => {
+
+  const mainImg = section.querySelector('#currentImage-buzos');
+  const thumbs = section.querySelectorAll('.thumbs img');
+  const left = section.querySelector('.arrow.left');
+  const right = section.querySelector('.arrow.right');
+
+  const name = section.querySelector('.product-name').textContent;
+  const price = section.querySelector('.product-price')
+    .textContent.replace('S/','').trim();
+
+  if (!mainImg || !thumbs.length) return;
+
+  const images = [...thumbs].map(img => img.src);
+  let index = 0;
+
+  function update() {
+    mainImg.src = images[index];
+    thumbs.forEach((img,i) =>
+      img.classList.toggle('active', i === index)
+    );
+  }
+
+  thumbs.forEach((img,i) => {
+    img.onclick = () => {
+      index = i;
+      update();
+    };
+  });
+
+  if (left) left.onclick = () => {
+    index = (index - 1 + images.length) % images.length;
+    update();
+  };
+
+  if (right) right.onclick = () => {
+    index = (index + 1) % images.length;
+    update();
+  };
+
+  const buyBtn = section.querySelector('.buy-btn');
+  if (buyBtn) {
+    buyBtn.onclick = () => comprar(name, price, mainImg.src);
+  }
+
+});
+</script>
+
+
+</body>
+</html>

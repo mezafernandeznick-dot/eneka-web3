@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ENEKA – Compresores</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+<header class="header">
+  <button class="icon-btn" onclick="history.back()">←</button>
+  <a class="logo" href="index.html">ENEKA</a>
+</header>
+
+<main class="main">
+
+  <nav class="breadcrumb">
+    <a href="index.html">Inicio</a>
+    <span class="sep">›</span>
+    <span>Compresores</span>
+  </nav>
+
+  <h1 class="page-title">Compresores</h1>
+  <p class="subhead">Rendimiento, soporte y comodidad.</p>
+
+  <!-- ================= BLOQUE PRODUCTO ================= -->
+  <section class="product-layout">
+
+    <!-- IZQUIERDA -->
+    <div>
+
+      <!-- LIFESTYLE -->
+      <div class="lifestyle-images">
+        <figure class="img-item">
+        <img src="img/commu.blanco.jpg" alt="Compresor lifestyle 1">
+        <figcaption>Color Blanco</fipgcation>
+        </figure>
+        <figure class="img-item">
+        <img src="img/commu.rosado.jpg" alt="Compresor lifestyle 1">
+        <figcaption>Color Rosado</fipgcation>
+        </figure>
+        <figure class="img-item">
+        <img src="img/commu.negro.jpg" alt="Compresor lifestyle 1">
+        <figcaption>Color Negro</fipgcation>
+        </figure>
+        
+      </div>
+
+      <!-- GALERÍA -->
+      
+    </div>
+
+    <!-- DERECHA -->
+    <div class="product-info">
+      <h4 class="product-name">Compresor Deportivo</h4>
+      <p class="product-desc">
+        Tela de alta compresión que brinda soporte muscular y libertad de movimiento.
+      </p>
+      <span class="product-price">S/ 36.00</span>
+
+      <button class="buy-btn" onclick="comprar(this)">
+  Comprar
+</button>
+
+    </div>
+
+  </section>
+  <!-- ================= FIN BLOQUE ================= -->
+
+</main>
+
+ <div class="fab-container">
+ <a class="fab whatsapp"
+   href="https://wa.me/51927208885?text=Hola!%20%E2%99%A5%20Vengo%20desde%20su%20p%C3%A1gina%20web%20y%20estoy%20interesada%20en%20adquirir%20un%20producto.%0AQuisiera%20m%C3%A1s%20informaci%C3%B3n,%20por%20favor.%20%E2%99%A5
+"
+   target="_blank"
+   rel="noopener">
+  <img src="img/WhatsApp_icon.png" alt="WhatsApp">
+</a>
+
+  <a class="fab instagram" href="https://www.instagram.com/eneka.fit/" target="_blank" rel="noopener">
+    <img src="img/ig.avif" alt="Instagram">
+  </a>
+
+  <a class="fab tiktok" href="https://www.tiktok.com/@eneka.fit?_r=1&_t=ZS-93fpCNyZUYO" target="_blank" rel="noopener">
+    <img src="img/tiktok.avif" alt="TikTok">
+  </a>
+</div>
+<script src="js/whatsapp.js"></script>
+
+<script>
+  const imagesComp = [
+    'img/compresores/1.jpg',
+    'img/compresores/2.jpg',
+    'img/compresores/3.jpg',
+    'img/compresores/4.jpg',
+    'img/compresores/5.jpg',
+    'img/compresores/6.jpg',
+    'img/compresores/7.jpg',
+    'img/compresores/8.jpg',
+    'img/compresores/9.jpg',
+    'img/compresores/10.jpg'
+  ];
+
+  let indexComp = 0;
+
+  function changeComp(el) {
+    indexComp = parseInt(el.dataset.index);
+    updateComp();
+  }
+
+  function nextComp() {
+    indexComp = (indexComp + 1) % imagesComp.length;
+    updateComp();
+  }
+
+  function prevComp() {
+    indexComp = (indexComp - 1 + imagesComp.length) % imagesComp.length;
+    updateComp();
+  }
+
+  function updateComp() {
+    document.getElementById('currentImage-comp').src =
+      imagesComp[indexComp];
+
+    document.querySelectorAll('.thumbs img').forEach(img =>
+      img.classList.remove('active')
+    );
+
+    const active = document.querySelector(
+      `.thumbs img[data-index="${indexComp}"]`
+    );
+    if (active) active.classList.add('active');
+  }
+</script>
+
+</body>
+</html>

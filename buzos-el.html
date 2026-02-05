@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ENEKA – Buzos para Él</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+<header class="header">
+  <button class="icon-btn" onclick="history.back()">←</button>
+  <a class="logo" href="index.html">ENEKA</a>
+</header>
+
+<main class="main">
+
+  <nav class="breadcrumb">
+    <a href="index.html">Inicio</a>
+    <span class="sep">›</span>
+    <span>Buzos para Él</span>
+  </nav>
+
+  <h1 class="page-title">Buzos para Él</h1>
+  <p class="subhead">Explora opciones deportivas para hombre.</p>
+
+  <!-- ================= BLOQUE PRODUCTO ================= -->
+  <section class="product-layout" data-product="1">
+
+    <!-- IZQUIERDA -->
+    <div>
+
+      <!-- LIFESTYLE -->
+      <div class="lifestyle-images">
+        <img src="img/buzos mujer.jpg">
+        <img src="img/buzos mujer.jpg">
+        <img src="img/buzos mujer.jpg">
+      </div>
+
+      <!-- GALERÍA -->
+      <div class="gallery-wrapper">
+
+        <!-- MINIATURAS -->
+        <div class="thumbs">
+          <img src="img/shorts.jpg" class="active">
+          <img src="img/s1.jpg">
+          <img src="img/s2.jpg">
+          <img src="img/s3.jpg">
+          <img src="img/s.co4.jpg">
+        </div>
+
+        <!-- IMAGEN PRINCIPAL -->
+        <div class="main-image">
+          <button class="arrow left">‹</button>
+          <img src="img/shorts.jpg" data-main>
+          <button class="arrow right">›</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DERECHA -->
+    <div class="product-info">
+      <h4 class="product-name">Buzo Deportivo</h4>
+      <p class="product-desc">
+        Buzo cómodo y abrigador, ideal para entrenar o uso diario.
+      </p>
+      <span class="product-price">S/ 45.00</span>
+      <button class="buy-btn">Comprar</button>
+    </div>
+
+  </section>
+
+</main>
+
+<a class="fab" href="https://wa.me/51927208885" target="_blank">
+  <img src="assets/icons/whatsapp.png">
+</a>
+
+<script src="js/whatsapp.js"></script>
+
+<script>
+document.querySelectorAll('[data-product]').forEach(section => {
+  const mainImg = section.querySelector('[data-main]');
+  const thumbs = section.querySelectorAll('.thumbs img');
+  const left = section.querySelector('.arrow.left');
+  const right = section.querySelector('.arrow.right');
+  const price = section.querySelector('.product-price').textContent.replace('S/','').trim();
+  const name = section.querySelector('.product-name').textContent;
+  let index = 0;
+
+  if (!mainImg || !thumbs.length) return;
+
+  const images = [...thumbs].map(img => img.src);
+
+  function update() {
+    mainImg.src = images[index];
+    thumbs.forEach((img,i)=>img.classList.toggle('active', i===index));
+  }
+
+  thumbs.forEach((img,i)=>{
+    img.onclick = () => { index=i; update(); };
+  });
+
+  left.onclick = () => {
+    index = (index - 1 + images.length) % images.length;
+    update();
+  };
+
+  right.onclick = () => {
+    index = (index + 1) % images.length;
+    update();
+  };
+
+  section.querySelector('.buy-btn').onclick = () =>
+    comprar(name, price, mainImg.src);
+});
+</script>
+
+</body>
+</html>
