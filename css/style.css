@@ -894,3 +894,12 @@ body {
     height: 26px !important;
   }
 }
+/* Ajuste específico para las imágenes de la sección "Tops Halter" */
+.tops-halter img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  margin: 0 auto;
+  display: block;
+}
